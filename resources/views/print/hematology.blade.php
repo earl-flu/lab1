@@ -91,13 +91,14 @@
     <div class="container">
         <div class="logo-div">
             <div>
-                <img class="ebmc-logo" src="{{ asset('/images/EBMC.jpg') }}" alt="Eastern Bicol Medical Center Logo">
+                <img class="ebmc-logo" src="{{ asset('/images/hospital-logo.jpg') }}"
+                    alt="Eastern Bicol Medical Center Logo">
             </div>
             <div class="ebmc-details">
-                <p class="uppercase bold">Eastern Bicol Medical Center</p>
-                <p>Virac, Catanduanes</p>
+                <p class="uppercase bold">Juan M. Alberto Memorial District Hospital</p>
+                <p>San Andres, Catanduanes</p>
                 <p class="bold">"PHIC Accredited Health Care Provider"</p>
-                <p class="email">ebmc@yahoo.com</p>
+                <p class="email">jmamdh@yahoo.com.ph</p>
             </div>
         </div>
 

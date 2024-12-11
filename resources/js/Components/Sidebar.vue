@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
     <div class="sidebar-header">
       <div class="logo-icon">
         <img
-        style="width:35px;"
+          style="width: 35px"
           src="/images/react.svg"
           class="logo-img"
           alt="Laboratory Logo"
@@ -174,50 +174,55 @@ onBeforeUnmount(() => {
           </ul>
         </li>
 
-        <!-- <li class="menu-label">Library</li>
+        <li class="menu-label">Library</li>
 
         <li>
           <a href="javascript:;" class="has-arrow">
             <div class="parent-icon">
-              <i class="material-icons-outlined">inventory_2</i>
+              <i class="material-icons-outlined">person</i>
             </div>
-            <div class="menu-title">Office</div>
+            <div class="menu-title">Med. Tech.</div>
           </a>
           <ul>
-            <li :class="isActive(route().current('offices.create'))">
-              <Link :href="route('offices.create')"
-                ><i class="material-icons-outlined">arrow_right</i>Add
-                Office</Link
+            <li
+              :class="
+                isActive(
+                  route().current('medical-technologists.index') ||
+                    route().current('medical-technologists.edit')
+                )
+              "
+            >
+              <Link :href="route('medical-technologists.index')"
+                ><i class="material-icons-outlined">arrow_right</i>All</Link
               >
             </li>
-            <li :class="isActive(route().current('offices.index') || route().current('offices.edit'))">
-              <Link :href="route('offices.index')"
-                ><i class="material-icons-outlined">arrow_right</i>Offices</Link
+            <li
+              :class="isActive(route().current('medical-technologists.create'))"
+            >
+              <Link :href="route('medical-technologists.create')"
+                ><i class="material-icons-outlined">arrow_right</i>Create</Link
               >
             </li>
           </ul>
         </li>
 
+        <li class="menu-label">Settings</li>
+
         <li>
           <a href="javascript:;" class="has-arrow">
             <div class="parent-icon">
-              <i class="material-icons-outlined">inventory_2</i>
+              <i class="material-icons-outlined">person</i>
             </div>
-            <div class="menu-title">Tags</div>
+            <div class="menu-title">Form Settings</div>
           </a>
           <ul>
-            <li :class="isActive(route().current('tags.create'))">
-              <Link :href="route('tags.create')"
-                ><i class="material-icons-outlined">arrow_right</i>Add Tag</Link
-              >
-            </li>
-            <li :class="isActive(route().current('tags.index') || route().current('tags.edit'))">
-              <Link :href="route('tags.index')"
-                ><i class="material-icons-outlined">arrow_right</i>Tags</Link
+            <li :class="isActive(route().current('settings.create'))">
+              <Link :href="route('settings.create')"
+                ><i class="material-icons-outlined">arrow_right</i>Edit</Link
               >
             </li>
           </ul>
-        </li> -->
+        </li>
       </ul>
       <!--end navigation-->
     </div>

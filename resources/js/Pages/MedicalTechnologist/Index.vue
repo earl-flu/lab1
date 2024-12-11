@@ -19,7 +19,7 @@ let name = ref(props.filters.name);
 
 const debouncedFetch = debounce((name) => {
   router.get(
-    route("offices.index"),
+    route("medical-technologists.index"),
     { name },
     {
       preserveState: true,
@@ -35,12 +35,12 @@ watch([name], (values) => {
 </script>
 
 <template>
-  <Head title="All Papers" />
+  <Head title="All Medical Technologists" />
 
   <AuthenticatedLayout>
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4">
-      <div class="breadcrumb-title pe-3">Office</div>
+      <div class="breadcrumb-title pe-3">Medical Technologists</div>
       <div class="ps-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0 p-0">
@@ -60,14 +60,16 @@ watch([name], (values) => {
           <div class="card-body">
             <div class="d-flex align-items-start justify-content-between mb-4">
               <div class="">
-                <h5 class="mb-0">All Offices</h5>
+                <h5 class="mb-0">All Medical Technologists</h5>
               </div>
             </div>
 
             <!-- Search inputs -->
             <form class="row g-3 mb-5">
               <div class="col-md-4">
-                <label for="name" class="form-label">Office Name</label>
+                <label for="name" class="form-label"
+                  >Medical Technologist Full Name</label
+                >
                 <input
                   type="text"
                   class="form-control"
@@ -85,9 +87,9 @@ watch([name], (values) => {
               <div></div>
               <Link
                 class="btn btn-primary px-4"
-                :href="route('offices.create')"
+                :href="route('medical-technologists.create')"
               >
-                <i class="bi bi-plus-lg me-2"></i>Add New Office
+                <i class="bi bi-plus-lg me-2"></i>Add New
               </Link>
             </div>
             <!-- End of add paper -->
@@ -97,15 +99,28 @@ watch([name], (values) => {
               <table class="table align-middle table-hover">
                 <thead class="table-dark">
                   <tr>
-                    <th>Office Name</th>
+                    <th>Full Name</th>
+                    <th>License Number</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="office in offices.data" :key="office.id">
+                  <tr
+                    v-for="medicalTechnologist in medicalTechnologists.data"
+                    :key="medicalTechnologist.id"
+                  >
                     <td>
                       <div class="d-flex align-items-center gap-3">
-                        <p class="mb-0 fw-bold">{{ office.name }}</p>
+                        <p class="mb-0 fw-bold">
+                          {{ medicalTechnologist.name }}
+                        </p>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center gap-3">
+                        <p class="mb-0 fw-bold">
+                          {{ medicalTechnologist.license_number }}
+                        </p>
                       </div>
                     </td>
                     <td>
@@ -120,7 +135,14 @@ watch([name], (values) => {
                             <i class="bi bi-three-dots"></i>
                           </button>
                           <ul class="dropdown-menu" style="">
-                            <Link :href="route('offices.edit', office)">
+                            <Link
+                              :href="
+                                route(
+                                  'medical-technologists.edit',
+                                  medicalTechnologist
+                                )
+                              "
+                            >
                               <a class="dropdown-item" href="javascript:;"
                                 ><i class="bi bi-pencil-square me-2"></i>Edit</a
                               >
@@ -132,7 +154,7 @@ watch([name], (values) => {
                   </tr>
                 </tbody>
               </table>
-              <Pagination :links="offices.links" />
+              <Pagination :links="medicalTechnologists.links" />
             </div>
           </div>
           <!-- End of table -->

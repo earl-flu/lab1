@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\BloodChemistryController;
 use App\Http\Controllers\HematologyController;
+use App\Http\Controllers\MedicalTechnologistController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\PaperDashboardController;
 use App\Http\Controllers\PrintFormController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\UrineController;
@@ -74,6 +76,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('hematologies', HematologyController::class);
     Route::resource('urines', UrineController::class);
     Route::resource('blood-chemistries', BloodChemistryController::class);
+
+    Route::resource('medical-technologists', MedicalTechnologistController::class)
+        ->except(['destroy']);
+
+    Route::resource('settings', SettingController::class)
+        ->except(['destroy']);
 });
 
 Route::post('/theme/update', [ThemeController::class, 'update'])->name('theme.update');

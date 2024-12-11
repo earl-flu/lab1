@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\MedicalTechnologist;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class MedicalTechnologistController extends Controller
 {
@@ -12,8 +14,18 @@ class MedicalTechnologistController extends Controller
      */
     public function index()
     {
-        $technologists = MedicalTechnologist::all();
-        return response()->json($technologists);
+        $medicalTechnologists = MedicalTechnologist::orderBy('name')
+            ->when(FacadesRequest::input('name'), function ($query, $name) {
+                $query->where('name', 'like', "%{$name}%");
+            })
+            ->paginate(5)
+            ->withQueryString()
+            ->onEachSide(0);
+
+        return Inertia::render('MedicalTechnologist/Index', [
+            'medicalTechnologists' => $medicalTechnologists,
+            'filters' => FacadesRequest::only('name')
+        ]);
     }
 
     /**
@@ -21,7 +33,8 @@ class MedicalTechnologistController extends Controller
      */
     public function create()
     {
-        //
+        // dd('test');
+        return Inertia::render('MedicalTechnologist/Create', []);
     }
 
     /**
@@ -36,7 +49,7 @@ class MedicalTechnologistController extends Controller
         ]);
 
         $technologist = MedicalTechnologist::create($validated);
-        return response()->json($technologist, 201);
+        return redirect()->route('medical-technologists.index');
     }
 
     /**
@@ -52,7 +65,12 @@ class MedicalTechnologistController extends Controller
      */
     public function edit(MedicalTechnologist $medicalTechnologist)
     {
-        //
+        return Inertia::render(
+            'MedicalTechnologist/Edit',
+            [
+                'medicalTechnologist' => $medicalTechnologist
+            ]
+        );
     }
 
     /**
@@ -67,7 +85,7 @@ class MedicalTechnologistController extends Controller
         ]);
 
         $medicalTechnologist->update($validated);
-        return response()->json($medicalTechnologist);
+        return redirect()->route('medical-technologists.index');
     }
 
     /**
