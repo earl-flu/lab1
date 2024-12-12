@@ -172,14 +172,14 @@
                 <td>Hematocrit</td>
                 <td>{{ $hematology->hematocrit_m }}</td>
                 <td class="text-right text-gray">M = 0.40-0.54</td>
-                <td>Eusinophils</td>
+                <td>Eosinophils</td>
                 <td>{{ $hematology->eusinophils }}</td>
                 <td class="text-right text-gray">0.02-0.04</td>
             </tr>
             <tr>
                 <td></td>
                 <td>{{ $hematology->hematocrit_f }}</td>
-                <td class="text-right text-gray">F = 0.37-0.47</td>
+                <td class="text-right text-gray">F = 0.30-0.47</td>
                 <td>Basophils</td>
                 <td>{{ $hematology->basophils }}</td>
                 <td class="text-right text-gray">0.00-0.01</td>

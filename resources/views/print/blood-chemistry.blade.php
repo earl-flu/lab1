@@ -156,7 +156,7 @@
         </div>
 
         <p class="bold uppercase" style="margin-top: 15px; text-align: center; font-size:14px;">BLOOD CHEMISTRY</p>
-        <p style="text-align: center;">BA 200 BIOSYSTEMS</p>
+        {{-- <p style="text-align: center;">BA 200 BIOSYSTEMS</p> --}}
 
         <table class="result-table">
             <tr>
@@ -212,8 +212,10 @@
                 <td>Uric Acid</td>
                 <td class="bold">{{ $bloodChemistry->uric_acid }}</td>
                 <td class="text-gray text-sm">150-420 umol/L</td>
-                <td style="text-align:center;" class="bold" colspan="3" rowspan="3">SERUM ELECTROLYTES <br>
-                    CBS-50</td>
+                <td style="text-align:center;" class="bold" colspan="3" rowspan="3">SERUM ELECTROLYTES 
+                    {{-- <br>
+                    CBS-50 --}}
+                </td>
             </tr>
             <tr>
                 <td>Total Bilirubin</td>

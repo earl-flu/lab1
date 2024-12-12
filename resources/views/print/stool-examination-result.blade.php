@@ -103,7 +103,7 @@
         </div>
 
         <hr style="margin-top: 10px;">
-        <p style="text-align: center; font-weight: bold; margin-top:10px; font-size:14px;">URINE EXAMINATION RESULTS</p>
+        <p style="text-align: center; font-weight: bold; margin-top:10px; font-size:14px;">STOOL EXAMINATION RESULTS</p>
         <div class="datereport-div">
             <div>
                 <p class="patient-id"><!--ID SHOULD BE HERE --></p>
@@ -174,7 +174,7 @@
             <tr>
                 <td width="25%">Red Cells</td>
                 <td width="25%" class="bold">{{ $stoolExamination->red_cells }}</td>
-                <td width="25%"><span class="bold" style="color:#515151;">G. lambia</span> (a) Cyst</td>
+                <td width="25%"><span class="bold" style="color:#515151;">Gardia lambia</span> (a) Cyst</td>
                 <td width="25%" class="bold">{{ $stoolExamination->g_lambia_a_cyst }}</td>
             </tr>
             <tr>
@@ -186,17 +186,17 @@
             <tr>
                 <td>Macrophages</td>
                 <td class="bold">{{ $stoolExamination->macrophages }}</td>
-                <td><span class="bold" style="color:#515151;">E. histolyca</span> (a) Cyst</td>
+                <td><span class="bold" style="color:#515151;">Entamoeba histolyca</span> (a) Cyst</td>
                 <td class="bold">{{ $stoolExamination->e_histolyca_a_cyst }}</td>
             </tr>
             <tr>
-                <td>Trichuris Ova</td>
+                <td>Trichuris trichiura</td>
                 <td class="bold">{{ $stoolExamination->trichuris_ova }}</td>
                 <td>(b) Trophozoite</td>
                 <td class="bold">{{ $stoolExamination->e_histolyca_b_trophozoite }}</td>
             </tr>
             <tr>
-                <td>Ascaris Ova</td>
+                <td>Ascaris lumbricoides</td>
                 <td class="bold">{{ $stoolExamination->ascaris_ova }}</td>
                 <td>Bacteria</td>
                 <td class="bold">{{ $stoolExamination->bacteria }}</td>
@@ -207,7 +207,7 @@
                 <td colspan="2" rowspan="3">Others: {{ $stoolExamination->others }}</td>
             </tr>
             <tr>
-                <td style="height: 25px;">T. hominis</td>
+                <td style="height: 25px;">Trichomonos hominis</td>
                 <td class="bold">{{ $stoolExamination->t_hominis }}</td>
             </tr>
             <tr style="height:25px;">
