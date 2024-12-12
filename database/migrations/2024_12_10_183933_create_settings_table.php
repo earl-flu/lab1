@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('hospital_name');
+            $table->string('hospital_address')->nullable();
             $table->string('hospital_tagline')->nullable();
             $table->string('hospital_logo')->nullable();
             $table->string('hospital_email')->nullable();
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->string('pathologist_name')->nullable();
             $table->string('pathologist_license_number')->nullable();
             $table->string('pathologist_esignature')->nullable();
+            $table->string('esig_style')->nullable();
             $table->timestamps();
         });
     }

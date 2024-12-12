@@ -9,9 +9,11 @@ use App\Http\Controllers\PaperDashboardController;
 use App\Http\Controllers\PrintFormController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\StoolExaminationController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\UrineController;
+use App\Models\StoolExamination;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +70,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/print/hematology/{hematology}', [PrintFormController::class, 'hematologyForm'])->name('hematologies.print');
     Route::get('/print/urine/{urine}', [PrintFormController::class, 'urineForm'])->name('urines.print');
     Route::get('/print/blood-chemistry/{bloodChemistry}', [PrintFormController::class, 'bloodChemistryForm'])->name('blood-chemistries.print');
+    Route::get('/print/stool-examination-result/{stoolExamination}', [PrintFormController::class, 'stoolExaminationResult'])
+        ->name('stool-examination-result.print');
 
     // Resource routes
     Route::resource('papers', PaperController::class);
@@ -81,6 +85,9 @@ Route::middleware('auth')->group(function () {
         ->except(['destroy']);
 
     Route::resource('settings', SettingController::class)
+        ->except(['destroy']);
+
+    Route::resource('stool-examinations', StoolExaminationController::class)
         ->except(['destroy']);
 });
 

@@ -8,6 +8,7 @@ const page = usePage();
 
 const form = useForm({
   hospital_name: "",
+  hospital_address: "",
   hospital_tagline: "",
   hospital_email: "",
   hospital_contact_number: "",
@@ -15,6 +16,7 @@ const form = useForm({
   pathologist_license_number: "",
   pathologist_esignature: null,
   hospital_logo: null,
+  esig_style: "",
 });
 
 // New reactive variable to hold setting data
@@ -32,6 +34,8 @@ onMounted(() => {
   fetchSettingData().then(() => {
     if (settingData.value) {
       form.hospital_name = settingData.value.hospital_name || "";
+      form.hospital_address = settingData.value.hospital_address || "";
+      form.esig_style = settingData.value.esig_style || "";
       form.hospital_tagline = settingData.value.hospital_tagline || "";
       form.hospital_email = settingData.value.hospital_email || "";
       form.hospital_contact_number =
@@ -120,10 +124,27 @@ const hospitalLogo = computed(() => {
                 </div>
               </div>
               <div class="col-md-12">
+                <label for="hospital_address" class="form-label"
+                  >Hospital Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="form.hospital_address"
+                  id="hospital_address"
+                />
+                <div class="invalid-feedback d-block">
+                  {{ form.errors.hospital_address }}
+                </div>
+              </div>
+              <div class="col-md-12">
                 <label for="hospital_logo" class="form-label"
                   >Hospital Logo</label
                 ><br />
-                <input type="file" @input="handleFileUpload($event, 'hospital_logo')" />
+                <input
+                  type="file"
+                  @input="handleFileUpload($event, 'hospital_logo')"
+                />
                 <!-- Display the uploaded image if it exists -->
                 <div v-if="form.hospital_logo">
                   <img
@@ -240,6 +261,20 @@ const hospitalLogo = computed(() => {
                 </progress>
                 <div class="invalid-feedback d-block">
                   {{ form.errors.pathologist_esignature }}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label for="esig_style" class="form-label"
+                  >eSignature CSS Style</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="form.esig_style"
+                  id="esig_style"
+                />
+                <div class="invalid-feedback d-block">
+                  {{ form.errors.esig_style }}
                 </div>
               </div>
               <div class="col-md-12 mt-4">

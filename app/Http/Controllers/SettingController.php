@@ -36,17 +36,12 @@ class SettingController extends Controller
 
     public function store(Request $request)
     {
-        // if (is_string($request->hospital_logo)) {
-        //     $request->merge(['hospital_logo' => null]);
-        // }
+        $this->cleanFileInputs($request);
 
-        // if (is_string($request->pathologist_esignature)) {
-        //     $request->merge(['pathologist_esignature' => null]);
-        // }
-        dd($request->hospital_logo);
-        // Validate the incoming request data
         $validatedData = $request->validate([
             'hospital_name' => 'required|string|max:255',
+            'hospital_address' => 'nullable|string|max:255',
+            'esig_style' => 'nullable|string|max:255',
             'hospital_tagline' => 'nullable|string|max:255',
             'hospital_email' => 'required|email|max:255',
             'hospital_contact_number' => 'nullable|string|max:20',
@@ -57,31 +52,14 @@ class SettingController extends Controller
         ]);
 
         DB::transaction(function () use ($request, $validatedData) {
-            // Fetch the existing settings to retain old values
-            $setting = Setting::find($request->id ?? 1);
+            $setting = Setting::find(1) ?? new Setting();
 
-
-            if ($request->hasFile('pathologist_esignature')) {
-                $validatedData['pathologist_esignature'] = $this
-                    ->handleFileUpload($request, 'pathologist_esignature', 'esignatures', 'pathologist-esignature');
-            } else {
-                $validatedData['pathologist_esignature'] = $setting->pathologist_esignature;
-            }
-
-            // Check if hospital_logo is present in the request
-            if ($request->hasFile('hospital_logo')) {
-                // Handle hospital_logo file
-                $validatedData['hospital_logo'] = $this
-                    ->handleFileUpload($request, 'hospital_logo', 'logos', 'hospital-logo');
-            } else {
-                // Keep the old hospital_logo if not changed
-                $validatedData['hospital_logo'] = $setting->hospital_logo;
-            }
+            $processedData = $this->processFileUploads($request, $validatedData, $setting);
 
             // Create or update the settings
             Setting::updateOrCreate(
-                ['id' => $setting],
-                $validatedData
+                ['id' => $setting->id],
+                $processedData
             );
         });
 
@@ -89,6 +67,46 @@ class SettingController extends Controller
             ->with('status', 'Settings updated successfully.');
     }
 
+
+    private function cleanFileInputs(Request $request): void
+    {
+        if (is_string($request->hospital_logo)) {
+            $request->merge(['hospital_logo' => null]);
+        }
+
+        if (is_string($request->pathologist_esignature)) {
+            $request->merge(['pathologist_esignature' => null]);
+        }
+    }
+
+    private function processFileUploads(Request $request, array $validatedData, Setting $setting): array
+    {
+        // Process pathologist signature
+        if ($request->hasFile('pathologist_esignature')) {
+            $validatedData['pathologist_esignature'] = $this->handleFileUpload(
+                $request,
+                'pathologist_esignature',
+                'esignatures',
+                'pathologist-esignature'
+            );
+        } else {
+            $validatedData['pathologist_esignature'] = $setting->pathologist_esignature;
+        }
+
+        // Process hospital logo
+        if ($request->hasFile('hospital_logo')) {
+            $validatedData['hospital_logo'] = $this->handleFileUpload(
+                $request,
+                'hospital_logo',
+                'logos',
+                'hospital-logo'
+            );
+        } else {
+            $validatedData['hospital_logo'] = $setting->hospital_logo;
+        }
+
+        return $validatedData;
+    }
 
     // Function to handle file uploads
     private function handleFileUpload($request, $fileKey, $directory, $customNamePrefix)

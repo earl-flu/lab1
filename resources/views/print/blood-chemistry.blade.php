@@ -95,13 +95,14 @@
     <div class="container">
         <div class="logo-div">
             <div>
-                <img class="ebmc-logo" src="{{ asset('/images/hospital-logo.jpg') }}" alt="Eastern Bicol Medical Center Logo">
+                <img class="ebmc-logo" src="{{ asset('/storage/' . $setting->hospital_logo) }}"
+                    alt="Eastern Bicol Medical Center Logo">
             </div>
             <div class="ebmc-details">
-                <p class="uppercase bold">Juan M. Alberto Memorial District Hospital</p>
-                <p>San Andres, Catanduanes</p>
-                <p class="bold">"PHIC Accredited Health Care Provider"</p>
-                <p class="email">jmamdh@yahoo.com.ph</p>
+                <p class="uppercase bold">{{ $setting->hospital_name }}</p>
+                <p>{{ $setting->hospital_address }}</p>
+                <p class="bold">{{ $setting->hospital_tagline }}</p>
+                <p class="email">{{ $setting->hospital_email }}</p>
             </div>
         </div>
 
@@ -282,9 +283,12 @@
                 <p>License No. {{ $bloodChemistry->medicalTechnologist->license_number }}</p>
             </div>
             <div style="font-size: 12px; text-align: center;">
-                <img style="width: 250px; margin-top: -29px; transform: rotate(-1deg);"
-                    src="{{ asset('/images/signature.png') }}" alt="Signature">
-                <p style="margin-top: -17px; position: relative; z-index: 10;">License No. 0078995</p>
+                <img style="{{ $setting->esig_style }}"
+                    src="{{ asset('/storage/' . $setting->pathologist_esignature) }}" alt="Signature">
+                <p style="text-decoration:underline; font-weight:600;">
+                    {{ $setting->pathologist_name }}</p>
+                <p style="position: relative; z-index: 10;">Pathologist</p>
+                <p style="position: relative; z-index: 10;">License No. {{ $setting->pathologist_license_number }}</p>
             </div>
         </div>
     </div>

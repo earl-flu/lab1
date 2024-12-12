@@ -174,6 +174,34 @@ onBeforeUnmount(() => {
           </ul>
         </li>
 
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon">
+              <i class="material-icons-outlined">radio_button_unchecked</i>
+            </div>
+            <div class="menu-title">Stool Exam.</div>
+          </a>
+          <ul>
+            <li
+              :class="
+                isActive(
+                  route().current('stool-examinations.index') ||
+                    route().current('stool-examinations.edit')
+                )
+              "
+            >
+              <Link :href="route('stool-examinations.index')"
+                ><i class="material-icons-outlined">arrow_right</i>All</Link
+              >
+            </li>
+            <li :class="isActive(route().current('stool-examinations.create'))">
+              <Link :href="route('stool-examinations.create')"
+                ><i class="material-icons-outlined">arrow_right</i>Create</Link
+              >
+            </li>
+          </ul>
+        </li>
+
         <li class="menu-label">Library</li>
 
         <li>

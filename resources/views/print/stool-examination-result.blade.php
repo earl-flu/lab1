@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Urine Examination Result - {{ $urine->first_name }}</title>
+    <title>Stool Examination Result - {{ $stoolExamination->first_name }}</title>
 </head>
 
 <style>
@@ -114,8 +114,8 @@
                         <td>Date of Report</td>
                         <td>:</td>
                         <td>
-                            @if (is_object($urine) && isset($urine->date_of_report))
-                                {{ date('m/d/Y', strtotime($urine->date_of_report)) }}
+                            @if (is_object($stoolExamination) && isset($stoolExamination->date_of_report))
+                                {{ date('m/d/Y', strtotime($stoolExamination->date_of_report)) }}
                             @else
                                 N/A
                             @endif
@@ -124,7 +124,7 @@
                     <tr>
                         <td>Time of Report</td>
                         <td>:</td>
-                        <td>{{ date('g:iA', strtotime($urine->date_of_report)) }}</td>
+                        <td>{{ date('g:iA', strtotime($stoolExamination->date_of_report)) }}</td>
                     </tr>
                 </table>
             </div>
@@ -133,98 +133,95 @@
         <div class="patient-info">
             <div
                 style="display: flex; justify-content: space-between; margin-top: 15px; padding:3px; border:1px solid black;">
-                <div>Name: <span class="bold uppercase">{{ $urine->last_name }}, {{ $urine->first_name }}
-                        {{ $urine->middle_name }}</span></div>
-                <div>Age: <span class="bold uppercase">{{ $urine->age }} y/o</span></div>
-                <div>Sex: <span class="bold uppercase">{{ $urine->sex }}</span></div>
+                <div>Name: <span class="bold uppercase">{{ $stoolExamination->last_name }},
+                        {{ $stoolExamination->first_name }}
+                        {{ $stoolExamination->middle_name }}</span></div>
+                <div>Age: <span class="bold uppercase">{{ $stoolExamination->age }} y/o</span></div>
+                <div>Sex: <span class="bold uppercase">{{ $stoolExamination->sex }}</span></div>
             </div>
             <div
                 style="display: flex; justify-content: space-between; padding:3px; border:1px solid black; border-top:none;">
-                <div>Requesting Physician: <span class="bold uppercase">{{ $urine->requesting_physician }}</span>
+                <div>Requesting Physician: <span
+                        class="bold uppercase">{{ $stoolExamination->requesting_physician }}</span>
                 </div>
             </div>
             <div
                 style="display: flex; justify-content: space-between; padding:3px; border:1px solid black; border-top:none;">
-                <div>Ward: <span class="bold uppercase">{{ $urine->ward }}</span></div>
+                <div>Ward: <span class="bold uppercase">{{ $stoolExamination->ward }}</span></div>
             </div>
         </div>
 
         <table class="result-table">
             <tr>
-                <th colspan="2">Macroscopic</th>
-                <th colspan="2">Microscopic</th>
+                <th colspan="4">MACROSCOPIC</th>
             </tr>
             <tr>
                 <td width="25%">Color</td>
-                <td width="25%" class="bold">{{ $urine->macro_color }}</td>
-                <td width="25%">Epithelial Cells</td>
-                <td width="25%" class="bold">{{ $urine->micro_epithelial_cells }}</td>
+                <td width="25%" class="bold">{{ $stoolExamination->color }}</td>
+                <td width="25%">Occult Blood</td>
+                <td width="25%" class="bold">{{ $stoolExamination->occult_blood }}</td>
             </tr>
             <tr>
-                <td>Transparency</td>
-                <td class="bold">{{ $urine->macro_transparency }}</td>
-                <td>Red Cells</td>
-                <td class="bold">{{ $urine->micro_red_cells }}</td>
+                <td>Consistency</td>
+                <td class="bold">{{ $stoolExamination->consistency }}</td>
+                <td></td>
+                <td class="bold"></td>
+            </tr>
+            {{--  --}}
+            <tr>
+                <th colspan="4">MICROSCOPIC</th>
             </tr>
             <tr>
-                <td>Sp. Gravity</td>
-                <td class="bold">{{ $urine->macro_sp_gravity }}</td>
+                <td width="25%">Red Cells</td>
+                <td width="25%" class="bold">{{ $stoolExamination->red_cells }}</td>
+                <td width="25%">G. lambia (a) Cyst</td>
+                <td width="25%" class="bold">{{ $stoolExamination->g_lambia_a_cyst }}</td>
+            </tr>
+            <tr>
                 <td>Pus Cells</td>
-                <td class="bold">{{ $urine->micro_pus_cells }}</td>
+                <td class="bold">{{ $stoolExamination->pus_cells }}</td>
+                <td>(b) Trophozoite</td>
+                <td class="bold">{{ $stoolExamination->b_trophozoite }}</td>
             </tr>
             <tr>
-                <td>Reaction (pH)</td>
-                <td class="bold">{{ $urine->macro_reaction_ph }}</td>
+                <td>Macrophages</td>
+                <td class="bold">{{ $stoolExamination->macrophages }}</td>
+                <td>E. histolyca (a) Cyst</td>
+                <td class="bold">{{ $stoolExamination->e_histolyca_a_cyst }}</td>
+            </tr>
+            <tr>
+                <td>Trichuris Ova</td>
+                <td class="bold">{{ $stoolExamination->trichuris_ova }}</td>
+                <td>(b) Trophozoite</td>
+                <td class="bold">{{ $stoolExamination->b_trophozoite }}</td>
+            </tr>
+            <tr>
+                <td>Ascaris Ova</td>
+                <td class="bold">{{ $stoolExamination->ascaris_ova }}</td>
                 <td>Bacteria</td>
-                <td class="bold">{{ $urine->micro_bacteria }}</td>
+                <td class="bold">{{ $stoolExamination->bacteria }}</td>
             </tr>
             <tr>
-                <td>Albumin</td>
-                <td class="bold">{{ $urine->macro_albumin }}</td>
-                <td>Casts</td>
-                <td class="bold">{{ $urine->micro_casts }}</td>
+                <td>Hookworm</td>
+                <td class="bold">{{ $stoolExamination->hookworm }}</td>
+                <td colspan="2" rowspan="3">Others: {{ $stoolExamination->others }}</td>
             </tr>
             <tr>
-                <td>Sugar</td>
-                <td class="bold">{{ $urine->macro_sugar }}</td>
+                <td style="height: 25px;">T. hominis</td>
+                <td class="bold">{{ $stoolExamination->t_hominis }}</td>
+            </tr>
+            <tr style="height:25px;">
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td style="height: 25px;"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Others</td>
-                <td colspan="3" class="bold">{{ $urine->others }}</td>
-            </tr>
-        </table>
 
-        <table class="result-table">
-            <tr class="bold">
-                <td style="font-size: 11px;">EXAMINATION</td>
-                <td style="font-size: 11px;">RESULT</td>
-                <td style="font-size: 11px;">BRAND NAME</td>
-                <td style="font-size: 11px;">LOT NO.</td>
-                <td style="font-size: 11px;">EXPIRY DATE</td>
-            </tr>
-            <tr>
-                <td style="font-size: 11px;" class="bold">Pregnancy Test</td>
-                <td style="font-size: 11px;">{{ $urine->pt_result }}</td>
-                <td style="font-size: 11px;">{{ $urine->pt_brand_name }}</td>
-                <td style="font-size: 11px;">{{ $urine->pt_lot_no }}</td>
-                <td style="font-size: 11px;">{{ $urine->pt_expiry_date }}</td>
-            </tr>
         </table>
-
         <div style="display: flex; justify-content: space-evenly; margin-top: 50px;">
             <div style="font-size: 12px; text-align: center;">
                 <p style="font-weight: bold; text-transform: uppercase; text-decoration: underline;">
-                    {{ $urine->medicalTechnologist->name }}</p>
+                    {{ $stoolExamination->medicalTechnologist->name }}</p>
                 <p>Medical Technologist</p>
-                <p>License No. {{ $urine->medicalTechnologist->license_number }}</p>
+                <p>License No. {{ $stoolExamination->medicalTechnologist->license_number }}</p>
             </div>
             <div style="font-size: 12px; text-align: center;">
                 <img style="{{ $setting->esig_style }}"
