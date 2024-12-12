@@ -498,7 +498,7 @@ const submit = () => {
                   class="btn btn-primary px-4"
                   :disabled="form.processing"
                 >
-                  Save Urine Record
+                  Save Stool Examination Record
                 </button>
               </div>
             </form>
