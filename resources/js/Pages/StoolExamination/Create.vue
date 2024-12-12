@@ -34,8 +34,9 @@ const form = useForm({
   hookworm: "",
   t_hominis: "",
   g_lambia_a_cyst: "",
-  b_trophozoite: "",
+  g_lambia_b_trophozoite: "",
   e_histolyca_a_cyst: "",
+  e_histolyca_b_trophozoite: "",
   bacteria: "",
   others: "",
   medical_technologist_id: "",
@@ -134,7 +135,6 @@ const submit = () => {
                     class="form-control"
                     v-model="form.first_name"
                     id="first_name"
-                    
                   />
                   <div class="invalid-feedback d-block">
                     {{ form.errors.first_name }}
@@ -167,7 +167,6 @@ const submit = () => {
                     class="form-control"
                     v-model="form.last_name"
                     id="last_name"
-                    
                   />
                   <div class="invalid-feedback d-block">
                     {{ form.errors.last_name }}
@@ -182,7 +181,6 @@ const submit = () => {
                     class="form-control"
                     v-model="form.age"
                     id="age"
-                    
                   />
                   <div class="invalid-feedback d-block">
                     {{ form.errors.age }}
@@ -192,12 +190,7 @@ const submit = () => {
               <div class="row mb-3">
                 <label for="sex" class="col-sm-3 col-form-label">Sex</label>
                 <div class="col-sm-9">
-                  <select
-                    class="form-select"
-                    v-model="form.sex"
-                    id="sex"
-                    
-                  >
+                  <select class="form-select" v-model="form.sex" id="sex">
                     <option value="">Select Sex</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -233,7 +226,6 @@ const submit = () => {
                     class="form-control"
                     v-model="form.requesting_physician"
                     id="requesting_physician"
-                    
                   />
                   <div class="invalid-feedback d-block">
                     {{ form.errors.requesting_physician }}
@@ -402,7 +394,7 @@ const submit = () => {
               </div>
               <div class="row mb-3">
                 <label for="g_lambia_a_cyst" class="col-sm-3 col-form-label"
-                  >G. Lambia A Cyst</label
+                  >G. Lambia - (a) Cyst</label
                 >
                 <div class="col-sm-9">
                   <input
@@ -417,24 +409,26 @@ const submit = () => {
                 </div>
               </div>
               <div class="row mb-3">
-                <label for="b_trophozoite" class="col-sm-3 col-form-label"
-                  >B. Trophozoite</label
+                <label
+                  for="g_lambia_b_trophozoite"
+                  class="col-sm-3 col-form-label"
+                  >G. Lambia - (b) Trophozoite</label
                 >
                 <div class="col-sm-9">
                   <input
                     type="text"
                     class="form-control"
-                    v-model="form.b_trophozoite"
-                    id="b_trophozoite"
+                    v-model="form.g_lambia_b_trophozoite"
+                    id="g_lambia_b_trophozoite"
                   />
                   <div class="invalid-feedback d-block">
-                    {{ form.errors.b_trophozoite }}
+                    {{ form.errors.g_lambia_b_trophozoite }}
                   </div>
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="e_histolyca_a_cyst" class="col-sm-3 col-form-label"
-                  >E. Histolyca A Cyst</label
+                  >E. Histolyca - (a) Cyst</label
                 >
                 <div class="col-sm-9">
                   <input
@@ -445,6 +439,22 @@ const submit = () => {
                   />
                   <div class="invalid-feedback d-block">
                     {{ form.errors.e_histolyca_a_cyst }}
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="e_histolyca_b_trophozoite" class="col-sm-3 col-form-label"
+                  >E. Histolyca - (b) Trophozoite</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="form.e_histolyca_b_trophozoite"
+                    id="e_histolyca_b_trophozoite"
+                  />
+                  <div class="invalid-feedback d-block">
+                    {{ form.errors.e_histolyca_b_trophozoite }}
                   </div>
                 </div>
               </div>

@@ -35,8 +35,9 @@ return new class extends Migration
             $table->string('hookworm')->nullable();
             $table->string('t_hominis')->nullable();
             $table->string('g_lambia_a_cyst')->nullable();
-            $table->string('b_trophozoite')->nullable();
+            $table->string('g_lambia_b_trophozoite')->nullable();
             $table->string('e_histolyca_a_cyst')->nullable();
+            $table->string('e_histolyca_b_trophozoite')->nullable();
             $table->string('bacteria')->nullable();
             $table->text('others')->nullable();
         });

@@ -174,26 +174,26 @@
             <tr>
                 <td width="25%">Red Cells</td>
                 <td width="25%" class="bold">{{ $stoolExamination->red_cells }}</td>
-                <td width="25%">G. lambia (a) Cyst</td>
+                <td width="25%"><span class="bold" style="color:#515151;">G. lambia</span> (a) Cyst</td>
                 <td width="25%" class="bold">{{ $stoolExamination->g_lambia_a_cyst }}</td>
             </tr>
             <tr>
                 <td>Pus Cells</td>
                 <td class="bold">{{ $stoolExamination->pus_cells }}</td>
                 <td>(b) Trophozoite</td>
-                <td class="bold">{{ $stoolExamination->b_trophozoite }}</td>
+                <td class="bold">{{ $stoolExamination->g_lambia_b_trophozoite }}</td>
             </tr>
             <tr>
                 <td>Macrophages</td>
                 <td class="bold">{{ $stoolExamination->macrophages }}</td>
-                <td>E. histolyca (a) Cyst</td>
+                <td><span class="bold" style="color:#515151;">E. histolyca</span> (a) Cyst</td>
                 <td class="bold">{{ $stoolExamination->e_histolyca_a_cyst }}</td>
             </tr>
             <tr>
                 <td>Trichuris Ova</td>
                 <td class="bold">{{ $stoolExamination->trichuris_ova }}</td>
                 <td>(b) Trophozoite</td>
-                <td class="bold">{{ $stoolExamination->b_trophozoite }}</td>
+                <td class="bold">{{ $stoolExamination->e_histolyca_b_trophozoite }}</td>
             </tr>
             <tr>
                 <td>Ascaris Ova</td>

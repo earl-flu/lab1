@@ -69,8 +69,9 @@ class StoolExaminationController extends Controller
             'hookworm' => 'nullable|string|max:255',
             't_hominis' => 'nullable|string|max:255',
             'g_lambia_a_cyst' => 'nullable|string|max:255',
-            'b_trophozoite' => 'nullable|string|max:255',
+            'g_lambia_b_trophozoite' => 'nullable|string|max:255',
             'e_histolyca_a_cyst' => 'nullable|string|max:255',
+            'e_histolyca_b_trophozoite' => 'nullable|string|max:255',
             'bacteria' => 'nullable|string|max:255',
             'others' => 'nullable|string',
         ]);
@@ -123,8 +124,9 @@ class StoolExaminationController extends Controller
             'hookworm' => 'nullable|string|max:255',
             't_hominis' => 'nullable|string|max:255',
             'g_lambia_a_cyst' => 'nullable|string|max:255',
-            'b_trophozoite' => 'nullable|string|max:255',
+            'g_lambia_b_trophozoite' => 'nullable|string|max:255',
             'e_histolyca_a_cyst' => 'nullable|string|max:255',
+            'e_histolyca_b_trophozoite' => 'nullable|string|max:255',
             'bacteria' => 'nullable|string|max:255',
             'others' => 'nullable|string',
         ]);
