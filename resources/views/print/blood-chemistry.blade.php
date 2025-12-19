@@ -212,7 +212,7 @@
                 <td>Uric Acid</td>
                 <td class="bold">{{ $bloodChemistry->uric_acid }}</td>
                 <td class="text-gray text-sm">150-420 umol/L</td>
-                <td style="text-align:center;" class="bold" colspan="3" rowspan="3">SERUM ELECTROLYTES 
+                <td style="text-align:center;" class="bold" colspan="3" rowspan="3">SERUM ELECTROLYTES
                     {{-- <br>
                     CBS-50 --}}
                 </td>
@@ -277,14 +277,14 @@
             </tr>
         </table>
 
-        <div style="display: flex; justify-content: space-evenly; margin-top: 50px;">
+        <div style="display: flex; justify-content: space-evenly; margin-top: 50px; gap:10px;">
             <div style="font-size: 12px; text-align: center;">
                 <p style="font-weight: bold; text-transform: uppercase; text-decoration: underline;">
                     {{ $bloodChemistry->medicalTechnologist->name }}</p>
                 <p>Medical Technologist</p>
                 <p>License No. {{ $bloodChemistry->medicalTechnologist->license_number }}</p>
             </div>
-            <div style="font-size: 12px; text-align: center;">
+            <div style="font-size: 12px; text-align: center; position:relative;">
                 <img style="{{ $setting->esig_style }}"
                     src="{{ asset('/storage/' . $setting->pathologist_esignature) }}" alt="Signature">
                 <p style="text-decoration:underline; font-weight:600;">

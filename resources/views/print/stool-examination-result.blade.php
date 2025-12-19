@@ -216,14 +216,14 @@
             </tr>
 
         </table>
-        <div style="display: flex; justify-content: space-evenly; margin-top: 50px;">
+        <div style="display: flex; justify-content: space-evenly; margin-top: 50px; gap:10px;">
             <div style="font-size: 12px; text-align: center;">
                 <p style="font-weight: bold; text-transform: uppercase; text-decoration: underline;">
                     {{ $stoolExamination->medicalTechnologist->name }}</p>
                 <p>Medical Technologist</p>
                 <p>License No. {{ $stoolExamination->medicalTechnologist->license_number }}</p>
             </div>
-            <div style="font-size: 12px; text-align: center;">
+            <div style="font-size: 12px; text-align: center; position:relative;">
                 <img style="{{ $setting->esig_style }}"
                     src="{{ asset('/storage/' . $setting->pathologist_esignature) }}" alt="Signature">
                 <p style="text-decoration:underline; font-weight:600;">
