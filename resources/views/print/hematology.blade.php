@@ -157,7 +157,7 @@
         </div>
 
         <p class="bold uppercase" style="margin-top: 15px; text-align: center; font-size:14px;">Hematology</p>
-        <p style="text-align: center;">MINDRAY BC-5150 (Fully Automatic Hematology Analyzer)</p>
+        {{-- <p style="text-align: center;">MINDRAY BC-5150 (Fully Automatic Hematology Analyzer)</p> --}}
 
         <table class="result-table">
             <tr>
